@@ -1,0 +1,4 @@
+--- 
+- hosts: IHM_SERVER
+  roles:
+   - role-soc-ihm

@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <script>
+      var url = window.location.href;
+      var arr = url.split("/");
+      var baseHREF = arr[0] + "//" + arr[2];
+      document.write('<base href="' + baseHREF + '" />');
+    </script>
+    <title>Socgen Information</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="icon" type="image/png" href="assets/images/logo_sg.jpg" />
+    <!-- 1. Load libraries -->
+     <script src="vendors.min.js"></script>
+
+    <!-- 2. Configure SystemJS -->
+    <script>System.import('bundle.min.js').catch(function(err){ console.error(err); });</script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <!-- 3. Display the application -->
+
+  <body>
+    <my-app>Loading...</my-app>
+  </body>
+</html>
+

@@ -1,0 +1,15 @@
+---
+# vars file for role-soc-ihm
+
+nodejs_logpath: /tmp/log/nodejs
+nodejs_logfile_name: nodejs.log
+binary_path: /usr/bin/nodejs
+npm_pkg_name: npm
+epel_pkg_name: epel-release
+nginx_pkg_name: nginx
+fileconf_path: /etc/nginx/nginx.conf
+fileservice_path: /lib/systemd/system/nginx.service
+application_path: /application/soc-ihm
+directory_application_path: /usr/share/nginx/
+application_port: 3000
+application_dist_path: /usr/share/nginx/soc-ihm/dist

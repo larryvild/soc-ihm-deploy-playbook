@@ -1,0 +1,66 @@
+@import "form.css";
+
+.login-container {
+    border: 1px solid rgb(194, 199, 208);
+    box-shadow: inset 0 0 3px rgba(151, 159, 175, 0.1);
+    margin: 0 auto;
+    width: 500px;
+}
+
+.active-tab,
+.active-tab:visited {
+    align-items: center;
+    color: rgb(68, 68, 68);
+    display: flex;
+    font-size: 20px;
+    height: 60px;
+    border: 0px;
+    justify-content: center;
+    outline: none;
+    overflow: hidden;
+    text-align: center;
+    text-decoration: none;
+    width: 49%;
+}
+
+.inactive-tab,
+.inactive-tab:visited {
+    align-items: center;
+    background-color: rgb(250, 250, 250);
+    border: 1px rgb(194, 199, 208);
+    border-bottom-style: solid;
+    color: rgb(151, 159, 192);
+    display: flex;
+    font-size: 20px;
+    height: 60px;
+    justify-content: center;
+    outline: none;
+    overflow: hidden;
+    text-align: center;
+    text-decoration: none;
+    width: 49%;
+}
+
+.duo-tab-left {
+    float: left;
+    border-right-style: solid;
+}
+
+.duo-tab-right {
+    float: right;
+    border-left-style: solid;
+}
+
+
+.form-container input[type="checkbox"] {
+    display: inline;
+    margin-bottom: 20px;
+    width: 1rem;
+}
+
+@media screen and (max-width: 550px) {
+    .login-container {
+        width: 300px;
+    }
+}
+
