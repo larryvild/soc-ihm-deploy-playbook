@@ -1,4 +1,4 @@
 --- 
 - hosts: IHM_SERVER
   roles:
-   - role-soc-ihm
+   - { role: role-soc-ihm, nginx_log_path: /var/log/nginx-custom-dir, application_directory: /usr/share/nginx, nginx_deploy_config: true }

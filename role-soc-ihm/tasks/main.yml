@@ -1,17 +1,21 @@
 ---
 
-- name: Copying nodejs compiled file
-  copy:
-    src: node
-    dest: "{{ binary_path }}"
-    mode: a+rx
-  become: yes
+- name: Checking if ansible_distribution_major_version and ansible_distribution are not defined
+  fail:
+    msg: "Ansible distribution or ansible distribution version are not defined"
+  when: ansible_distribution_major_version is not defined or ansible_distribution is not defined
 
-- name: Installing npm
-  yum:
-    name: "{{npm_pkg_name}}"
-    state: present
-  become: yes
+- name: Checking if target server is not CentOS 7
+  fail:
+    msg: "This role can only be run on CentOS 7 servers"
+  when: ansible_distribution != "CentOS" or (ansible_distribution == "CentOS" and ansible_distribution_major_version != "7")
+
+- name: Testing input vars
+  assert: { that: "{{ item }} is defined" }
+  with_items:
+      - nginx_log_path
+      - application_directory
+  when: nginx_deploy_config
 
 - name: Adding CentOS EPEL repository
   yum:
@@ -31,6 +35,13 @@
     dest: "{{fileconf_path}}"
   become: yes
 
+- name: Create log path if not exist
+  file:
+    path: "{{nginx_log_path }}"
+    state: directory
+    mode: 755
+  become: yes
+
 - name: Configuring Nginx service
   template:
     src: nginx.service.j2
@@ -41,10 +52,16 @@
   command: systemctl daemon-reload
   become: yes
 
+- name: Logrotate configuration file
+  template:
+    src: logrotate.nginx.j2
+    dest: /etc/logrotate.d/nginx
+  become: yes
+
 - name: Pushing application
   copy:
     src: soc-ihm
-    dest: "{{directory_application_path}}"
+    dest: "{{application_directory}}"
   become: yes
 
 - name: Starting Nginx service

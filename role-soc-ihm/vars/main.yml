@@ -1,10 +1,8 @@
 ---
 # vars file for role-soc-ihm
 
-nodejs_logpath: /tmp/log/nodejs
-nodejs_logfile_name: nodejs.log
-binary_path: /usr/bin/nodejs
-npm_pkg_name: npm
+#binary_path: /usr/bin/nodejs
+#npm_pkg_name: npm
 epel_pkg_name: epel-release
 nginx_pkg_name: nginx
 fileconf_path: /etc/nginx/nginx.conf
